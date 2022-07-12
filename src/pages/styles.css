@@ -1,0 +1,8 @@
+.card-header-title #icon {
+  margin-right: 10px;
+  color: black;
+}
+
+.field .is-grouped .is-grouped-right .control .button .icon {
+  margin-right: 10px;
+}
