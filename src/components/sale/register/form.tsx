@@ -50,7 +50,7 @@ export const SaleForm: React.FC<SaleFormProps> = ({ onSubmit }) => {
   const [productNotFoundErrorMessage, setProductNotFoundErrorMessage] =
     useState<string>("");
 
-  const paymentType: String[] = ["BOLETO", "CARTÃO DE CRÉDITO", "PIX"];
+  const paymentType: String[] = ["BOLETO", "CARTAO", "PIX"];
 
   const validationSchema = yup.object().shape({
     client: yup.object().nullable(true).required("Campo obrigatório!"),
