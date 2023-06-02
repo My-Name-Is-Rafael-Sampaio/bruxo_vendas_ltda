@@ -1,0 +1,39 @@
+CREATE DATABASE db_bruxo_vendas_ltda;
+
+CREATE TABLE client (
+    id serial primary key,
+    cpf character varying(14) NOT NULL,
+    name character varying(100) NOT NULL,
+    birth_date date NOT NULL,
+    address character varying(255) NOT NULL,
+    telephone character varying(14) NOT NULL,
+    email character varying(200) NOT NULL,
+    date_register date NOT NULL
+);
+
+CREATE TABLE product (
+    id serial primary key,
+    bar_code character varying(20) NOT NULL,
+    name character varying(100) NOT NULL,
+    description character varying(255) NOT NULL,
+    price numeric(16,2) NOT NULL,
+    date_register date NOT NULL
+);
+
+CREATE TABLE sale (
+    id serial primary key,
+    client_id bigint NOT NULL,
+    payment_type character varying(10) NOT NULL,
+    amount numeric(16,2) NOT NULL,
+    CONSTRAINT sale_payment_type_check CHECK (((payment_type)::text = ANY ((ARRAY['BOLETO'::character varying, 'CARTAO'::character varying, 'PIX'::character varying])::text[]))),
+    CONSTRAINT sale_client_id_fkey FOREIGN KEY (client_id) REFERENCES client(id)	 
+);
+
+CREATE TABLE sale_item (
+    id serial primary key,
+    sale_id bigint NOT NULL,
+    product_id bigint NOT NULL,
+    quantity integer NOT NULL,
+    CONSTRAINT sale_item_sale_id_fkey FOREIGN KEY (sale_id) REFERENCES sale(id),
+    CONSTRAINT sale_item_product_id_fkey FOREIGN KEY (product_id) REFERENCES product(id)
+);

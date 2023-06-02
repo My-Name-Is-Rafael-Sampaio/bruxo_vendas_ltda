@@ -1,0 +1,19 @@
+.clientInformation .labelClientInformation {
+  margin-bottom: 5px;
+}
+
+.productInformation .labelProductInformation {
+  margin-bottom: 5px;
+}
+
+.saleInformation .labelPaymentType {
+  margin-bottom: 5px;
+}
+
+.saleInformation .labelQuantityItems {
+  margin-bottom: 5px;
+}
+
+.saleInformation .labelTotalValue {
+  margin-bottom: 5px;
+}
